@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-base-100 text-base-content font-sans antialiased overflow-x-hidden;
+    transition: background-color 280ms ease, color 280ms ease;
+  }
+
+  ::selection {
+    @apply bg-primary/30;
+  }
+
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  .page-wrap {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8;
+  }
+
+  .hairline {
+    @apply border-base-content/15;
+  }
+
+  .kicker {
+    @apply font-display text-[0.68rem] font-medium uppercase tracking-kicker text-base-content/60;
+  }
+
+  .display-title {
+    @apply font-display font-extrabold leading-[0.9] tracking-tight;
+  }
+
+  .serif-body {
+    @apply font-serif text-base leading-relaxed text-base-content/85 sm:text-[1.05rem];
+  }
+
+  .section-rule {
+    @apply border-t hairline;
+  }
+
+  .link-quiet {
+    @apply underline decoration-base-content/25 underline-offset-4 transition hover:decoration-primary;
+  }
+
+  .btn-editorial {
+    @apply btn btn-primary min-h-11 rounded-sm px-5 font-display text-sm font-semibold tracking-wide;
+  }
+
+  .btn-ghost-editorial {
+    @apply btn btn-outline min-h-11 rounded-sm border-base-content/25 bg-transparent px-5 font-display text-sm font-semibold tracking-wide hover:border-primary hover:bg-primary hover:text-primary-content;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise {
+  animation: rise 0.5s ease both;
+}
+
+.rise-delay-1 {
+  animation-delay: 0.05s;
+}
+
+.rise-delay-2 {
+  animation-delay: 0.1s;
+}
+
+.rise-delay-3 {
+  animation-delay: 0.15s;
+}
+
+.rise-delay-4 {
+  animation-delay: 0.2s;
+}
