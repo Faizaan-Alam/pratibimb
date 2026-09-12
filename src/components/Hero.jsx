@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { logoSrc } from "../data/assets";
-import { getCurrentEdition, getLatestReadableEdition } from "../data/editions";
 import { site } from "../data/siteContent";
+import { useEditions } from "../hooks/useEditions.jsx";
 import SpiralMark from "./SpiralMark";
 
 export default function Hero() {
-  const current = getCurrentEdition();
-  const readable = getLatestReadableEdition();
+  const { current, latestReadable: readable } = useEditions();
   const primaryTo = current.pdfAvailable
     ? `/edition/${current.slug}`
     : readable

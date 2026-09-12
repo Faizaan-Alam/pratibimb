@@ -1,0 +1,19 @@
+PASTE PRATIBIMB HERE
+====================
+
+This folder is watched by the website.
+
+1. Put the magazine PDF in this folder.
+2. Name it:
+
+     pratibimb.pdf
+
+3. Optional cover, same folder:
+
+     cover.webp
+     (cover.jpg or cover.png also work)
+
+4. Refresh the site.
+
+Read and Download buttons appear on their own.
+You do not edit any React files.

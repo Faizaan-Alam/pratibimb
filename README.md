@@ -30,6 +30,7 @@ npm run preview
 
 | Task | File or folder |
 | --- | --- |
+| Publish the current issue | Drop `pratibimb.pdf` into `public/assets/editions/pratibimb/` |
 | Add a new magazine | `src/data/editions.js` plus a PDF in `public/assets/editions/` |
 | Change About text | `src/data/siteContent.js` (`about`) |
 | Change the tagline, nav, footer | `src/data/siteContent.js` (`site`) |
@@ -54,13 +55,16 @@ npm run preview
 
 If `cover` is empty, the site draws an edition plate from the title and logo. If `pdfAvailable` is false, Read and Download buttons are not shown.
 
-### Pratibimb 4.0 PDF
+### Current issue PDF (drop folder)
 
-The 4.0 issue file was not in the project when this site was built. To publish it:
+The current issue is still in progress. When the file is ready, do not edit React code.
 
-1. Save the PDF as `public/assets/editions/pratibimb-4.0.pdf`.
-2. Optional cover: `public/assets/editions/pratibimb-4.0-cover.webp`.
-3. In `src/data/editions.js`, set `pdfAvailable: true` and, if you added a cover, set the `cover` path.
+1. Open `public/assets/editions/pratibimb/`.
+2. Paste the magazine as `pratibimb.pdf`.
+3. Optional cover in the same folder: `cover.webp` (or `cover.jpg`).
+4. Refresh the website.
+
+The home page, archive, and reader look for that file automatically. Read and Download appear once the PDF is there.
 
 ### Pratibimb 3.0
 
@@ -99,10 +103,10 @@ Same rule: replace the file, keep the name.
 
 ```text
 public/assets/logo/pratibimb-logo.webp
+public/assets/editions/pratibimb/pratibimb.pdf
+public/assets/editions/pratibimb/cover.webp
 public/assets/editions/pratibimb-3.0.pdf
 public/assets/editions/pratibimb-3.0-cover.webp
-public/assets/editions/pratibimb-4.0.pdf
-public/assets/editions/pratibimb-4.0-cover.webp
 ```
 
 ## Themes

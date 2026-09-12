@@ -1,13 +1,16 @@
 /*
   HOW TO ADD A NEW MAGAZINE EDITION
-  1. Place the PDF in public/assets/editions/ (example: pratibimb-5.0.pdf)
-  2. Optional: add a cover as public/assets/editions/pratibimb-5.0-cover.webp
-  3. Copy an object in the editions array below and fill in the fields
-  4. Set status: "current" on the latest issue, and "archive" on the others
-  5. Set pdfAvailable: true only after the PDF file is actually in the folder
+  For the current issue you only drop files. See:
+    public/assets/editions/pratibimb/HOW-TO-ADD.txt
 
-  Cover images are optional. If cover is empty, the site draws an edition plate
-  from the title, version, and logo.
+  For a future edition (5.0 and later):
+  1. Place the PDF in public/assets/editions/
+  2. Optional cover: public/assets/editions/pratibimb-5.0-cover.webp
+  3. Copy an object in the editions array below
+  4. Set status: "current" on the latest issue
+
+  Cover images are optional. If no cover file is found, the site draws
+  an edition plate from the title, version, and logo.
 */
 
 export const editions = [
@@ -22,8 +25,21 @@ export const editions = [
     tagline: "Capturing perfection in every reflection.",
     description:
       "The current edition of Pratibimb, the annual magazine of the IEEE Student Branch at Bharati Vidyapeeth's College of Engineering, New Delhi.",
+    dropFolder: "/assets/editions/pratibimb",
+    detectFiles: true,
+    pdf: "/assets/editions/pratibimb/pratibimb.pdf",
     cover: "",
-    pdf: "/assets/editions/pratibimb-4.0.pdf",
+    pdfCandidates: [
+      "/assets/editions/pratibimb/pratibimb.pdf",
+      "/assets/editions/pratibimb/Pratibimb.pdf",
+      "/assets/editions/pratibimb/magazine.pdf",
+    ],
+    coverCandidates: [
+      "/assets/editions/pratibimb/cover.webp",
+      "/assets/editions/pratibimb/cover.jpg",
+      "/assets/editions/pratibimb/cover.jpeg",
+      "/assets/editions/pratibimb/cover.png",
+    ],
     pdfAvailable: false,
     pageCount: null,
     sections: [

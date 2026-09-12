@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import EditionCover from "../components/EditionCover";
-import { getEditionBySlug, getLatestReadableEdition } from "../data/editions";
+import { useEditions } from "../hooks/useEditions.jsx";
 import { usePageTitle } from "../hooks/usePageTitle";
 
 export default function ReaderPage() {
   const { slug } = useParams();
-  const edition = getEditionBySlug(slug);
-  const fallback = getLatestReadableEdition();
+  const { getBySlug, latestReadable: fallback } = useEditions();
+  const edition = getBySlug(slug);
 
   usePageTitle(edition ? edition.title : "Reader");
 
@@ -33,8 +33,9 @@ export default function ReaderPage() {
           <p className="kicker">Current edition</p>
           <h1 className="display-title mt-3 text-4xl sm:text-5xl">{edition.title}</h1>
           <p className="serif-body mt-5 max-w-xl">
-            The PDF for this edition has not been added yet. See the README for how to attach the
-            file. Until then, earlier issues remain in the archive.
+            {edition.dropFolder
+              ? `The ${edition.title} PDF is not in the drop folder yet. Paste it into public/assets/editions/pratibimb/ as pratibimb.pdf, then refresh.`
+              : `The PDF for this edition has not been added yet. Until then, earlier issues remain in the archive.`}
           </p>
           {fallback ? (
             <Link to={`/edition/${fallback.slug}`} className="btn-editorial mt-6">

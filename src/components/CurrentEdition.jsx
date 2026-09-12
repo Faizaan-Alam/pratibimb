@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { getCurrentEdition, getLatestReadableEdition } from "../data/editions";
+import { useEditions } from "../hooks/useEditions.jsx";
 import EditionCover from "./EditionCover";
 
 export default function CurrentEdition() {
-  const edition = getCurrentEdition();
-  const readable = getLatestReadableEdition();
+  const { current: edition, latestReadable: readable } = useEditions();
 
   return (
     <section className="section-rule">
@@ -51,8 +50,10 @@ export default function CurrentEdition() {
 
           {!edition.pdfAvailable ? (
             <p className="mt-5 max-w-xl font-display text-sm text-base-content/60">
-              The {edition.title} file is not in the archive yet. Pratibimb 3.0 is available to read
-              now.
+              Pratibimb 4.0 is still being prepared. When the issue is ready, paste{" "}
+              <code className="text-primary">pratibimb.pdf</code> into{" "}
+              <code className="text-primary">public/assets/editions/pratibimb/</code> and
+              refresh. Pratibimb 3.0 is available to read now.
             </p>
           ) : null}
         </div>

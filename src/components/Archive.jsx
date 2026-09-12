@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { editions } from "../data/editions";
+import { useEditions } from "../hooks/useEditions.jsx";
 import EditionCard from "./EditionCard";
 
 export default function Archive({ limit, showLink = true }) {
+  const { editions } = useEditions();
   const list = typeof limit === "number" ? editions.slice(0, limit) : editions;
 
   return (
