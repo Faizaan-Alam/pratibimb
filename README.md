@@ -130,6 +130,8 @@ To add a theme:
 ```text
 public/assets/
   logo/pratibimb-logo.webp
+  editions/pratibimb/pratibimb.pdf
+  editions/pratibimb/cover.webp
   editions/pratibimb-3.0.pdf
   editions/pratibimb-3.0-cover.webp
   team/faizaan.webp
