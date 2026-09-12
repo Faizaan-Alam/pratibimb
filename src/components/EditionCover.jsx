@@ -20,8 +20,6 @@ export default function EditionCover({ edition, className = "", sizes = "cover" 
     );
   }
 
-  const versionClass =
-    sizes === "hero" ? "text-5xl sm:text-6xl" : sizes === "reader" ? "text-4xl" : "text-3xl";
   const nameClass =
     sizes === "hero" ? "text-[1.35rem] sm:text-2xl" : "text-[0.7rem] sm:text-xs";
   const logoClass =
@@ -46,14 +44,7 @@ export default function EditionCover({ edition, className = "", sizes = "cover" 
       >
         PRATIBIMB
       </p>
-      <div className="absolute bottom-4 right-4 text-right">
-        <p className="font-display text-[0.55rem] uppercase tracking-kicker text-[#f3e8ff]/70">
-          {edition.academicYear || edition.year}
-        </p>
-        <p className={`mt-1 font-display font-bold leading-none text-[#f3e8ff] ${versionClass}`}>
-          {edition.version}
-        </p>
-      </div>
+
     </div>
   );
 }
