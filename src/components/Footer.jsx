@@ -54,6 +54,15 @@ export default function Footer() {
       <div className="border-t hairline">
         <div className="page-wrap flex flex-col gap-2 py-5 font-display text-xs text-base-content/55 sm:flex-row sm:items-center sm:justify-between">
           <p>{site.college}</p>
+          <p>
+            Made by{" "}
+            <a
+              href="https://github.com/Faizaan-Alam"
+              className="link-quiet text-base-content/80"
+            >
+              Faizaan
+            </a>
+          </p>
           <p>A publication of {site.branch}</p>
         </div>
       </div>
