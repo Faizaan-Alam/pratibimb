@@ -6,9 +6,9 @@ export default function Team({ compact = false }) {
     <section className="section-rule" id={compact ? undefined : "meet-the-team"}>
       <div className="page-wrap py-16 lg:py-24">
         <p className="kicker">Masthead</p>
-        <h2 className="display-title mt-3 text-4xl sm:text-5xl">Meet the team</h2>
+        <h2 className="display-title mt-3 text-4xl sm:text-5xl">Pratibimb 4.0 core team</h2>
         <p className="serif-body mt-5 max-w-2xl">
-          This year's Pratibimb team: Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh.
+          Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh.
         </p>
         <div
           className={`mt-10 grid gap-8 sm:grid-cols-2 ${compact ? "lg:grid-cols-4" : "lg:grid-cols-2"}`}
