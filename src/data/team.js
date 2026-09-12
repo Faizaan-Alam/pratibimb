@@ -1,7 +1,7 @@
 /*
   HOW TO UPDATE THE TEAM
 
-  Pratibimb 4.0 names, roles, and descriptions: edit issueTeam below.
+  Current team names, roles, and descriptions: edit issueTeam below.
   Photographs: replace the .webp file in public/assets/team/. Keep the filename.
 
     faizaan.webp          -> Faizaan Alam
@@ -59,7 +59,7 @@ export const faculty = [
   {
     id: "monika-bhutani",
     name: "Monika Bhutani",
-    // Title as printed in Pratibimb 3.0. Change this string if 4.0 uses another title.
+    // Title as printed in Pratibimb 3.0. Change this string if a later issue uses another title.
     role: "Branch Counsellor",
     number: "05",
     image: "/assets/team/monika-bhutani.webp",

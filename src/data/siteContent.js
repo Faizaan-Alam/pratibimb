@@ -6,7 +6,7 @@
 
 export const site = {
   name: "Pratibimb",
-  editionLabel: "Pratibimb 4.0",
+  editionLabel: "Pratibimb",
   college: "Bharati Vidyapeeth's College of Engineering, New Delhi",
   collegeShort: "BVCOE",
   branch: "IEEE BVCOE Student Branch",
@@ -35,7 +35,7 @@ export const about = {
   ],
   evolution: [
     "Pratibimb 3.0, issued for 2024-2025, is the third edition. Its printed index is built around society, awards, events, project reports, technical articles, non-technical work, and alumni reflections.",
-    "Pratibimb 4.0 continues that editorial shape in print and on this site. The website is the digital home of the magazine: a place to read an issue, return to the archive, and meet the people who make it.",
+    "This website is the digital home of Pratibimb: a place to read an issue, return to the archive, and meet the people who make it. New editions can be added as they are published.",
   ],
   collegeNote: {
     title: "The college, as printed in Pratibimb 3.0",
@@ -48,13 +48,13 @@ export const editorial = {
   kicker: "Editorial",
   title: "Letters in the issue",
   intro:
-    "Printed Pratibimb issues open with notes from the college, IEEE, and the student branch. The passages below are from Pratibimb 3.0. The 4.0 editors' letter can be added when it is ready.",
+    "Printed Pratibimb issues open with notes from the college, IEEE, and the student branch. The passages below are from Pratibimb 3.0. A current editors' letter can be added when it is ready.",
   fromCurrentEditors: {
-    title: "From the editors of Pratibimb 4.0",
+    title: "From the editors",
     placeholder: true,
-    body: "The editors' letter for Pratibimb 4.0 will appear here.",
+    body: "The editors' letter will appear here.",
     signoff: "Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh",
-    role: "Pratibimb 4.0",
+    role: "Editorial team",
   },
   excerpts: [
     {

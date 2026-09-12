@@ -1,4 +1,4 @@
-# Pratibimb 4.0
+# Pratibimb
 
 Digital home of **Pratibimb**, the annual magazine of the IEEE Student Branch at Bharati Vidyapeeth's College of Engineering, New Delhi.
 
@@ -36,7 +36,7 @@ npm run preview
 | Change the tagline, nav, footer | `src/data/siteContent.js` (`site`) |
 | Change editorial notes | `src/data/siteContent.js` (`editorial`) |
 | Change Explore sections | `src/data/siteContent.js` (`categories`) |
-| Change the 4.0 team | `src/data/team.js` (`issueTeam`) |
+| Change the current team | `src/data/team.js` (`issueTeam`) |
 | Add previous-issue people (exes) | `src/data/team.js` (`exes`) |
 | Replace the logo | `public/assets/logo/pratibimb-logo.webp` (keep that filename) |
 | Replace team photographs | `public/assets/team/` (keep the filenames listed below) |
@@ -96,7 +96,7 @@ Until a real photograph is dropped in, each file is an editorial placeholder tha
 
 To change a name, role, or short description, edit `src/data/team.js`. Leave `description` empty if you do not have copy.
 
-Monika Bhutani's role is set to Branch Counsellor, as printed in Pratibimb 3.0. Change that string in `src/data/team.js` if the 4.0 masthead uses another title.
+Monika Bhutani's role is set to Branch Counsellor, as printed in Pratibimb 3.0. Change that string in `src/data/team.js` if a later issue uses another title.
 
 ## How to replace other assets
 

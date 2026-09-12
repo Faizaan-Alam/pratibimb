@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="kicker">Pratibimb 4.0</p>
+          <p className="kicker">Masthead</p>
           <ul className="mt-4 space-y-3">
             {issueTeam.map((member) => (
               <li key={member.id}>

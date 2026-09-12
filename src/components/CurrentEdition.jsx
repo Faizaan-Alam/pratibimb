@@ -50,7 +50,7 @@ export default function CurrentEdition() {
 
           {!edition.pdfAvailable ? (
             <p className="mt-5 max-w-xl font-display text-sm text-base-content/60">
-              Pratibimb 4.0 is still being prepared. When the issue is ready, paste{" "}
+              The current issue is still being prepared. When the file is ready, paste{" "}
               <code className="text-primary">pratibimb.pdf</code> into{" "}
               <code className="text-primary">public/assets/editions/pratibimb/</code> and
               refresh. Pratibimb 3.0 is available to read now.

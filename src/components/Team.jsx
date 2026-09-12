@@ -24,8 +24,8 @@ export default function Team({ compact = false }) {
       <div className="page-wrap py-16 lg:py-24">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="kicker">Vol. 04 · Masthead</p>
-            <h2 className="display-title mt-3 text-4xl sm:text-5xl">The people of this issue</h2>
+            <p className="kicker">Masthead</p>
+            <h2 className="display-title mt-3 text-4xl sm:text-5xl">Meet the team</h2>
           </div>
           {compact ? (
             <Link to="/team" className="link-quiet font-display text-sm">
@@ -34,7 +34,7 @@ export default function Team({ compact = false }) {
           ) : null}
         </div>
         <p className="serif-body mt-5 max-w-2xl">
-          Pratibimb 4.0 is made by Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh.
+          Pratibimb is made by Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh.
         </p>
 
         {compact ? (
@@ -48,11 +48,11 @@ export default function Team({ compact = false }) {
             <section className="lg:pr-10">
               <div className="flex items-baseline justify-between gap-4">
                 <p className="kicker">Section 01</p>
-                <p className="kicker text-primary">4.0</p>
+                <p className="kicker text-primary">Now</p>
               </div>
               <h3 className="display-title mt-3 text-3xl sm:text-4xl">This issue</h3>
               <p className="serif-body mt-3 max-w-md">
-                The current masthead. Chief editors and the magazine coordinator of Pratibimb 4.0.
+                The current masthead. Chief editors and the magazine coordinator of Pratibimb.
               </p>
               <div className="mt-8 grid gap-8 sm:grid-cols-2">
                 {issueTeam.map((member) => (
@@ -85,7 +85,7 @@ export default function Team({ compact = false }) {
                     2024-2025
                   </p>
                   <p className="serif-body mt-4">
-                    The previous edition remains in the archive while 4.0 is being prepared.
+                    Earlier editions remain in the archive.
                   </p>
                   <Link to="/edition/pratibimb-3.0" className="btn-ghost-editorial mt-6">
                     Read Pratibimb 3.0

@@ -34,7 +34,7 @@ export default function Navbar() {
               {site.name}
             </span>
             <span className="block font-display text-[0.65rem] uppercase tracking-kicker text-base-content/55">
-              4.0
+              Magazine
             </span>
           </span>
         </Link>
