@@ -17,8 +17,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/archive" element={<ArchivePage />} />
-          <Route path="/explore" element={<ExplorePage />} />
           <Route path="/team" element={<TeamPage />} />
+          <Route path="/explore" element={<ExplorePage />} />
           <Route path="/edition/:slug" element={<ReaderPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>

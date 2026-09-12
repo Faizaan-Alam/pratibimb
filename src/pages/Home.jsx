@@ -16,9 +16,9 @@ export default function Home() {
       <CurrentEdition />
       <About compact />
       <Archive limit={2} />
+      <Team compact />
       <Explore compact />
       <EditorialMessage />
-      <Team compact />
     </>
   );
 }

@@ -20,8 +20,8 @@ export const site = {
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/archive", label: "Archive" },
-    { to: "/explore", label: "Explore" },
     { to: "/team", label: "Team" },
+    { to: "/explore", label: "Explore" },
   ],
 };
 
