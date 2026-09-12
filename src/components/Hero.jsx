@@ -24,7 +24,7 @@ export default function Hero() {
         <div className="page-wrap grid gap-10 py-10 sm:py-14 lg:grid-cols-12 lg:items-center lg:min-h-[calc(100svh-9rem)] lg:py-12">
           <div className="relative z-10 min-w-0 lg:col-span-7">
             <p className="kicker rise">
-              {site.branch} · {current.academicYear || current.year}
+              Vol. 04 · {site.branch} · {current.academicYear || current.year}
             </p>
             <h1 className="display-title rise rise-delay-1 mt-6 text-[clamp(2.5rem,7.2vw,6.5rem)]">
               <span className="block">Pratibimb</span>

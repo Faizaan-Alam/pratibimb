@@ -24,7 +24,7 @@ function PortraitFallback({ member }) {
   );
 }
 
-export default function TeamMemberCard({ member }) {
+export default function TeamMemberCard({ member, compact = false }) {
   const [failed, setFailed] = useState(false);
   const showImage = Boolean(member.image) && !failed;
 
@@ -45,9 +45,11 @@ export default function TeamMemberCard({ member }) {
           <PortraitFallback member={member} />
         )}
       </div>
-      <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-4 gap-y-1">
+      <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-baseline gap-x-3 gap-y-1">
         <p className="font-display text-sm text-base-content/40">{member.number}</p>
-        <h3 className="display-title text-2xl sm:text-3xl">{member.name}</h3>
+        <h3 className={`display-title ${compact ? "text-xl sm:text-2xl" : "text-2xl sm:text-3xl"}`}>
+          {member.name}
+        </h3>
         <span />
         <p className="font-display text-xs uppercase tracking-kicker text-base-content/55">
           {member.role}

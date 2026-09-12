@@ -53,8 +53,8 @@ export const editorial = {
     title: "From the editors of Pratibimb 4.0",
     placeholder: true,
     body: "The editors' letter for Pratibimb 4.0 will appear here.",
-    signoff: "Faizaan Alam, Pakhi, Abhipshita",
-    role: "Chief Editors",
+    signoff: "Faizaan Alam, Pakhi, Abhipshita, and Devansh Kumar",
+    role: "Pratibimb 4.0",
   },
   excerpts: [
     {

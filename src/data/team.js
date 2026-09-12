@@ -1,7 +1,7 @@
 /*
   HOW TO UPDATE THE TEAM
 
-  Names, roles, and descriptions: edit the objects in this file.
+  Pratibimb 4.0 names, roles, and descriptions: edit issueTeam below.
   Photographs: replace the .webp file in public/assets/team/. Keep the filename.
 
     faizaan.webp          -> Faizaan Alam
@@ -10,16 +10,18 @@
     devansh.webp          -> Devansh Kumar
     monika-bhutani.webp   -> Monika Bhutani
 
-  Do not change the image path unless you also rename the file.
-  Leave description empty if you do not have copy. Do not invent biographies.
+  Exes (previous issues): add objects to the exes array.
+  Optional photo: public/assets/team/<filename>.webp then set image.
+
+  Do not invent biographies. Leave description empty if you do not have copy.
 */
 
-export const team = [
+export const issueTeam = [
   {
     id: "faizaan-alam",
     name: "Faizaan Alam",
     role: "Chief Editor",
-    group: "Chief Editors",
+    issue: "4.0",
     number: "01",
     image: "/assets/team/faizaan.webp",
     description: "",
@@ -28,7 +30,7 @@ export const team = [
     id: "pakhi",
     name: "Pakhi",
     role: "Chief Editor",
-    group: "Chief Editors",
+    issue: "4.0",
     number: "02",
     image: "/assets/team/pakhi.webp",
     description: "",
@@ -37,7 +39,7 @@ export const team = [
     id: "abhipshita",
     name: "Abhipshita",
     role: "Chief Editor",
-    group: "Chief Editors",
+    issue: "4.0",
     number: "03",
     image: "/assets/team/abhipshita.webp",
     description: "",
@@ -46,22 +48,32 @@ export const team = [
     id: "devansh-kumar",
     name: "Devansh Kumar",
     role: "Magazine Coordinator",
-    group: "Magazine Coordinator",
+    issue: "4.0",
     number: "04",
     image: "/assets/team/devansh.webp",
     description: "",
   },
+];
+
+export const faculty = [
   {
     id: "monika-bhutani",
     name: "Monika Bhutani",
     // Title as printed in Pratibimb 3.0. Change this string if 4.0 uses another title.
     role: "Branch Counsellor",
-    group: "Faculty",
     number: "05",
     image: "/assets/team/monika-bhutani.webp",
     description: "",
   },
 ];
+
+/*
+  Previous Pratibimb people. Add a name, role, and issue (for example "3.0").
+  Photograph is optional.
+*/
+export const exes = [];
+
+export const team = [...issueTeam, ...faculty];
 
 export const teamGroups = ["Chief Editors", "Magazine Coordinator", "Faculty"];
 

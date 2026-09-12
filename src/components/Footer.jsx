@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { logoSrc } from "../data/assets";
 import { site } from "../data/siteContent";
-import { team } from "../data/team";
+import { issueTeam } from "../data/team";
 
 export default function Footer() {
   return (
@@ -40,9 +40,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="kicker">Masthead</p>
+          <p className="kicker">Pratibimb 4.0</p>
           <ul className="mt-4 space-y-3">
-            {team.map((member) => (
+            {issueTeam.map((member) => (
               <li key={member.id}>
                 <p className="font-display text-sm font-semibold">{member.name}</p>
                 <p className="font-display text-xs text-base-content/55">{member.role}</p>

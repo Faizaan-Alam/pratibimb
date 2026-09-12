@@ -36,7 +36,8 @@ npm run preview
 | Change the tagline, nav, footer | `src/data/siteContent.js` (`site`) |
 | Change editorial notes | `src/data/siteContent.js` (`editorial`) |
 | Change Explore sections | `src/data/siteContent.js` (`categories`) |
-| Change team members | `src/data/team.js` |
+| Change the 4.0 team | `src/data/team.js` (`issueTeam`) |
+| Add previous-issue people (exes) | `src/data/team.js` (`exes`) |
 | Replace the logo | `public/assets/logo/pratibimb-logo.webp` (keep that filename) |
 | Replace team photographs | `public/assets/team/` (keep the filenames listed below) |
 | Change team names or roles | `src/data/team.js` |
