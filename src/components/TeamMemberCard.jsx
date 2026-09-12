@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { withBase } from "../data/assets";
 
 function initials(name) {
   return name
@@ -33,7 +34,7 @@ export default function TeamMemberCard({ member, compact = false }) {
       <div className="overflow-hidden border hairline bg-base-200">
         {showImage ? (
           <img
-            src={member.image}
+            src={withBase(member.image)}
             alt={`Portrait of ${member.name}, ${member.role}`}
             className="aspect-[3/4] h-auto w-full object-cover transition duration-300 group-hover:scale-[1.03]"
             width="900"

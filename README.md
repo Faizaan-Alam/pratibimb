@@ -4,19 +4,35 @@ Digital home of **Pratibimb**, the annual magazine of the IEEE Student Branch at
 
 This is a static React site. There is no backend. Editors should be able to update magazines, team, and copy without rewriting the UI.
 
-## Run locally
+## How to open the site
+
+### On your computer
+
+In a terminal, from this project folder:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Then open the address Vite prints (usually `http://localhost:5173`).
+Then open **http://localhost:5173** in your browser.
 
-```bash
-npm run build
-npm run preview
-```
+If that page does not load:
+
+1. Install Node.js 20 from https://nodejs.org
+2. Run the two commands above again
+3. Use Chrome or Firefox, not a file explorer window
+4. Do not open `index.html` directly from the folder. The site needs `npm run dev`.
+
+To stop the server, press Ctrl+C in the terminal.
+
+### Live on GitHub Pages
+
+After the deploy workflow finishes:
+
+**https://faizaan-alam.github.io/pratibimb/**
+
+The magazine PDF is large. If Read looks blank, use **Open in a new tab** or **Download**.
 
 ## Stack
 

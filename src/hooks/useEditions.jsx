@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { withBase } from "../data/assets";
 import { editions as catalog } from "../data/editions";
 
 const EditionContext = createContext(null);
@@ -21,7 +22,7 @@ function matchesType(contentType, kind) {
 }
 
 async function fileExists(url) {
-  const encoded = encodeURI(url);
+  const encoded = encodeURI(withBase(url));
   const kind = expectedType(url);
   try {
     const head = await fetch(encoded, { method: "HEAD" });
@@ -44,22 +45,30 @@ async function firstExisting(urls) {
   return "";
 }
 
+function withAssetPaths(edition) {
+  return {
+    ...edition,
+    pdf: withBase(edition.pdf),
+    cover: edition.cover ? withBase(edition.cover) : "",
+  };
+}
+
 async function resolveEdition(edition) {
-  if (!edition.detectFiles) return edition;
+  if (!edition.detectFiles) return withAssetPaths(edition);
 
   const pdf = await firstExisting(edition.pdfCandidates || [edition.pdf]);
   const cover = await firstExisting(edition.coverCandidates || [edition.cover]);
 
   return {
     ...edition,
-    pdf: pdf || edition.pdf,
-    cover: cover || edition.cover || "",
-    pdfAvailable: Boolean(pdf),
+    pdf: withBase(pdf || edition.pdf),
+    cover: cover ? withBase(cover) : edition.cover ? withBase(edition.cover) : "",
+    pdfAvailable: Boolean(pdf) || Boolean(edition.pdfAvailable && edition.pdf),
   };
 }
 
 export function EditionProvider({ children }) {
-  const [list, setList] = useState(catalog);
+  const [list, setList] = useState(() => catalog.map(withAssetPaths));
 
   useEffect(() => {
     let cancelled = false;
