@@ -87,8 +87,8 @@ The site already points at these files. You only replace the file. You do not ed
 ```text
 faizaan.webp          -> Faizaan Alam
 pakhi.webp            -> Pakhi
-abhipshita.webp       -> Abhipshita
-devansh.webp          -> Devansh Kumar
+abhipshita.webp       -> Abhipsita Sarkaar
+devansh.webp          -> Devansh
 monika-bhutani.webp   -> Monika Bhutani
 ```
 

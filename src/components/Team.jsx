@@ -34,7 +34,7 @@ export default function Team({ compact = false }) {
           ) : null}
         </div>
         <p className="serif-body mt-5 max-w-2xl">
-          Pratibimb 4.0 is made by Faizaan Alam, Pakhi, Abhipshita, and Devansh Kumar.
+          Pratibimb 4.0 is made by Faizaan Alam, Pakhi, Abhipsita Sarkaar, and Devansh.
         </p>
 
         {compact ? (

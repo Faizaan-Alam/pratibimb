@@ -6,8 +6,8 @@
 
     faizaan.webp          -> Faizaan Alam
     pakhi.webp            -> Pakhi
-    abhipshita.webp       -> Abhipshita
-    devansh.webp          -> Devansh Kumar
+    abhipshita.webp       -> Abhipsita Sarkaar
+    devansh.webp          -> Devansh
     monika-bhutani.webp   -> Monika Bhutani
 
   Exes (previous issues): add objects to the exes array.
@@ -37,7 +37,7 @@ export const issueTeam = [
   },
   {
     id: "abhipshita",
-    name: "Abhipshita",
+    name: "Abhipsita Sarkaar",
     role: "Chief Editor",
     issue: "4.0",
     number: "03",
@@ -46,7 +46,7 @@ export const issueTeam = [
   },
   {
     id: "devansh-kumar",
-    name: "Devansh Kumar",
+    name: "Devansh",
     role: "Magazine Coordinator",
     issue: "4.0",
     number: "04",
