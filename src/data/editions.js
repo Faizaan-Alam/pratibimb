@@ -29,16 +29,10 @@ export const editions = [
     detectFiles: true,
     pdf: "/assets/editions/pratibimb/pratibimb.pdf",
     cover: "",
-    pdfCandidates: [
-      "/assets/editions/pratibimb/pratibimb.pdf",
-      "/assets/editions/pratibimb/Pratibimb.pdf",
-      "/assets/editions/pratibimb/magazine.pdf",
-    ],
+    pdfCandidates: ["/assets/editions/pratibimb/pratibimb.pdf"],
     coverCandidates: [
       "/assets/editions/pratibimb/cover.webp",
       "/assets/editions/pratibimb/cover.jpg",
-      "/assets/editions/pratibimb/cover.jpeg",
-      "/assets/editions/pratibimb/cover.png",
     ],
     pdfAvailable: false,
     pageCount: null,

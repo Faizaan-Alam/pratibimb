@@ -32,6 +32,8 @@ After the deploy workflow finishes:
 
 **https://faizaan-alam.github.io/pratibimb/**
 
+If a page looks empty after deploy, open that GitHub Pages link (not the GitHub repo page). Inner pages use hash routes, for example `/#/team`.
+
 The magazine PDF is large. If Read looks blank, use **Open in a new tab** or **Download**.
 
 ## Stack

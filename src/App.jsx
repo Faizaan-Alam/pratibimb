@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import { EditionProvider } from "./hooks/useEditions.jsx";
 import AboutPage from "./pages/AboutPage";
 import ArchivePage from "./pages/ArchivePage";
+import ConnectPage from "./pages/ConnectPage";
 import ExplorePage from "./pages/ExplorePage";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/archive" element={<ArchivePage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/explore" element={<ExplorePage />} />
+          <Route path="/connect" element={<ConnectPage />} />
           <Route path="/edition/:slug" element={<ReaderPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>

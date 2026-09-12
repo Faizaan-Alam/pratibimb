@@ -22,6 +22,25 @@ export const site = {
     { to: "/archive", label: "Archive" },
     { to: "/team", label: "Team" },
     { to: "/explore", label: "Explore" },
+    { to: "/connect", label: "Connect" },
+  ],
+};
+
+export const connect = {
+  kicker: "Connect",
+  title: "IEEE BVCOE",
+  intro:
+    "Pratibimb is the magazine of the IEEE Student Branch at Bharati Vidyapeeth's College of Engineering, New Delhi. The branch site and public channels below are taken from ieeebvcoe.in.",
+  branchSite: {
+    label: "ieeebvcoe.in",
+    href: "https://www.ieeebvcoe.in/",
+  },
+  links: [
+    { label: "Branch website", href: "https://www.ieeebvcoe.in/" },
+    { label: "Instagram", href: "https://instagram.com/ieeebvcoe" },
+    { label: "LinkedIn", href: "https://linkedin.com/company/ieee-bvcoe" },
+    { label: "Facebook", href: "https://facebook.com/ieeebvcoe" },
+    { label: "Linktree", href: "https://linktr.ee/ieeebvcoe" },
   ],
 };
 

@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Archive from "../components/Archive";
+import Connect from "../components/Connect";
 import CurrentEdition from "../components/CurrentEdition";
 import EditorialMessage from "../components/EditorialMessage";
 import Explore from "../components/Explore";
@@ -18,6 +19,7 @@ export default function Home() {
       <Archive limit={2} />
       <Team compact />
       <Explore compact />
+      <Connect compact />
       <EditorialMessage />
     </>
   );

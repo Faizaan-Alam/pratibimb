@@ -24,6 +24,18 @@ export default function Footer() {
             </div>
           </div>
           <p className="serif-body mt-5 max-w-sm">{site.footerStatement}</p>
+          <p className="mt-4 font-display text-sm">
+            Pratibimb of{" "}
+            <a
+              href="https://www.ieeebvcoe.in/"
+              className="link-quiet"
+              target="_blank"
+              rel="noreferrer"
+            >
+              IEEE BVCOE
+            </a>
+            .
+          </p>
         </div>
 
         <div>
