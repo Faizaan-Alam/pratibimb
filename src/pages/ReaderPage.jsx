@@ -1,7 +1,10 @@
+import { lazy, Suspense } from "react";
 import { Link, useParams } from "react-router-dom";
 import EditionCover from "../components/EditionCover";
 import { useEditions } from "../hooks/useEditions.jsx";
 import { usePageTitle } from "../hooks/usePageTitle";
+
+const FlipBook = lazy(() => import("../components/FlipBook"));
 
 export default function ReaderPage() {
   const { slug } = useParams();
@@ -72,16 +75,9 @@ export default function ReaderPage() {
         </div>
       </div>
       <div className="page-wrap pb-12">
-        <div className="relative border hairline bg-base-100">
-          <p className="serif-body absolute inset-x-6 top-8 text-center text-base-content/60">
-            Loading the issue. If the reader stays blank, use Open in a new tab.
-          </p>
-          <iframe
-            title={`${edition.title} PDF reader`}
-            src={`${edition.pdf}#view=FitH`}
-            className="relative z-10 h-[80vh] w-full bg-transparent"
-          />
-        </div>
+        <Suspense fallback={<p className="py-16 text-center font-display text-sm">Opening the reader</p>}>
+          <FlipBook key={edition.pdf} src={edition.pdf} title={edition.title} />
+        </Suspense>
       </div>
     </section>
   );

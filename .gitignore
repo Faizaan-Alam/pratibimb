@@ -12,8 +12,9 @@ dist
 dist-ssr
 *.local
 
-# Print-quality original is ~226 MB. The web copy lives in public/assets/editions/.
+# Print-quality originals. Web copies live in public/assets/editions/.
 /Pratibimb 3.0.pdf
+/4.0.pdf
 /logo.png
 
 # Editor directories and files

@@ -28,14 +28,14 @@ export const editions = [
     dropFolder: "/assets/editions/pratibimb",
     detectFiles: true,
     pdf: "/assets/editions/pratibimb/pratibimb.pdf",
-    cover: "",
+    cover: "/assets/editions/pratibimb/cover.jpg",
     pdfCandidates: ["/assets/editions/pratibimb/pratibimb.pdf"],
     coverCandidates: [
       "/assets/editions/pratibimb/cover.webp",
       "/assets/editions/pratibimb/cover.jpg",
     ],
-    pdfAvailable: false,
-    pageCount: null,
+    pdfAvailable: true,
+    pageCount: 106,
     sections: [
       "Society Snapshot",
       "Awards & Achievement",
