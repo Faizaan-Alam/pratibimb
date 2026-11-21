@@ -20,7 +20,7 @@ export const site = {
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
     { to: "/archive", label: "Archive" },
-    { to: "/team", label: "Team" },
+    { to: "/team", label: "Editors" },
     { to: "/explore", label: "Explore" },
     { to: "/connect", label: "Connect" },
   ],
