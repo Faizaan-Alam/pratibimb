@@ -54,11 +54,9 @@ The magazine PDF is large. If Read looks blank, use **Open in a new tab** or **D
 | Change the tagline, nav, footer | `src/data/siteContent.js` (`site`) |
 | Change editorial notes | `src/data/siteContent.js` (`editorial`) |
 | Change Explore sections | `src/data/siteContent.js` (`categories`) |
-| Change the current team | `src/data/team.js` (`issueTeam`) |
-| Add previous-issue people (exes) | `src/data/team.js` (`exes`) |
+| Change the editors | `src/data/team.js` |
 | Replace the logo | `public/assets/logo/pratibimb-logo.webp` (keep that filename) |
-| Replace team photographs | `public/assets/team/` (keep the filenames listed below) |
-| Change team names or roles | `src/data/team.js` |
+| Replace editor photographs | `public/assets/editors/4.0/` |
 | Change themes | `tailwind.config.js` (colors) and `src/data/themes.js` (switcher labels) |
 | Favicon | `public/favicon.png` |
 
@@ -74,16 +72,9 @@ The magazine PDF is large. If Read looks blank, use **Open in a new tab** or **D
 
 If `cover` is empty, the site draws an edition plate from the title and logo. If `pdfAvailable` is false, Read and Download buttons are not shown.
 
-### Current issue PDF (drop folder)
+### Current issue PDF
 
-The current issue is still in progress. When the file is ready, do not edit React code.
-
-1. Open `public/assets/editions/pratibimb/`.
-2. Paste the magazine as `pratibimb.pdf`.
-3. Optional cover in the same folder: `cover.webp` (or `cover.jpg`).
-4. Refresh the website.
-
-The home page, archive, and reader look for that file automatically. Read and Download appear once the PDF is there.
+Pratibimb 4.0 is `public/assets/editions/pratibimb/pratibimb.pdf`, with its cover at `cover.jpg` in that same folder. Replace those files and refresh. Read and Download use whatever PDF is there.
 
 ### Pratibimb 3.0
 
@@ -93,28 +84,13 @@ The provided file `Pratibimb 3.0.pdf` belongs at:
 
 The cover used on the site is `public/assets/editions/pratibimb-3.0-cover.webp` (page 1 of that issue).
 
-## How to replace team photos
+## How to replace editor photos
 
-The site already points at these files. You only replace the file. You do not edit React components.
+1. Put the new photograph in `public/assets/editors/4.0/`.
+2. Point that person's `image` in `src/data/team.js` at the file.
+3. Refresh the website. If the old image remains, do a hard refresh (Ctrl+Shift+R).
 
-1. Go to `public/assets/team/`.
-2. Replace the matching `.webp` with the new photograph.
-3. Keep the filename exactly the same.
-4. Refresh the website. If the old image remains, do a hard refresh (Ctrl+Shift+R).
-
-```text
-faizaan.webp          -> Faizaan Alam
-pakhi.webp            -> Pakhi
-abhipshita.webp       -> Abhipsita Sarkaar
-devansh.webp          -> Devansh
-monika-bhutani.webp   -> Monika Bhutani
-```
-
-Until a real photograph is dropped in, each file is an editorial placeholder that says PHOTO PLACEHOLDER. It is not a portrait.
-
-To change a name, role, or short description, edit `src/data/team.js`. Leave `description` empty if you do not have copy.
-
-Monika Bhutani's role is set to Branch Counsellor, as printed in Pratibimb 3.0. Change that string in `src/data/team.js` if a later issue uses another title.
+The current files are `faizaan.webp`, `devansh.webp`, and `pakhi.webp`. Abhipsita has no photograph yet. Names and roles are in `src/data/team.js`.
 
 ## How to replace other assets
 
@@ -123,9 +99,10 @@ Same rule: replace the file, keep the name.
 ```text
 public/assets/logo/pratibimb-logo.webp
 public/assets/editions/pratibimb/pratibimb.pdf
-public/assets/editions/pratibimb/cover.webp
+public/assets/editions/pratibimb/cover.jpg
 public/assets/editions/pratibimb-3.0.pdf
 public/assets/editions/pratibimb-3.0-cover.webp
+public/assets/editors/4.0/
 ```
 
 ## Themes
@@ -150,15 +127,10 @@ To add a theme:
 public/assets/
   logo/pratibimb-logo.webp
   editions/pratibimb/pratibimb.pdf
-  editions/pratibimb/cover.webp
+  editions/pratibimb/cover.jpg
   editions/pratibimb-3.0.pdf
   editions/pratibimb-3.0-cover.webp
-  team/faizaan.webp
-  team/pakhi.webp
-  team/abhipshita.webp
-  team/devansh.webp
-  team/monika-bhutani.webp
-  images/
+  editors/4.0/
 
 src/data/         All editable copy and metadata
 src/components/   Reusable UI

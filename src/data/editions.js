@@ -1,9 +1,5 @@
 /*
   HOW TO ADD A NEW MAGAZINE EDITION
-  For the current issue you only drop files. See:
-    public/assets/editions/pratibimb/HOW-TO-ADD.txt
-
-  For a future edition (5.0 and later):
   1. Place the PDF in public/assets/editions/
   2. Optional cover: public/assets/editions/pratibimb-5.0-cover.webp
   3. Copy an object in the editions array below
@@ -20,7 +16,6 @@ export const editions = [
     title: "Pratibimb 4.0",
     version: "4.0",
     year: "2026",
-    academicYear: "",
     status: "current",
     tagline: "Capturing perfection in every reflection.",
     description:
@@ -36,15 +31,6 @@ export const editions = [
     ],
     pdfAvailable: true,
     pageCount: 106,
-    sections: [
-      "Society Snapshot",
-      "Awards & Achievement",
-      "Events Archive",
-      "Project Reports",
-      "Technical Articles",
-      "Non-Technical Articles",
-      "Reviews and Reflections",
-    ],
   },
   {
     id: "3.0",
@@ -61,30 +47,5 @@ export const editions = [
     pdf: "/assets/editions/pratibimb-3.0.pdf",
     pdfAvailable: true,
     pageCount: 117,
-    sections: [
-      "Society Snapshot",
-      "Awards & Achievement",
-      "Events Archive",
-      "Project Reports",
-      "Technical Articles",
-      "Non-Technical Articles",
-      "Reviews and Reflections",
-    ],
   },
 ];
-
-export function getCurrentEdition() {
-  return editions.find((edition) => edition.status === "current") || editions[0];
-}
-
-export function getEditionBySlug(slug) {
-  return editions.find((edition) => edition.slug === slug);
-}
-
-export function getReadableEditions() {
-  return editions.filter((edition) => edition.pdfAvailable);
-}
-
-export function getLatestReadableEdition() {
-  return getReadableEditions()[0] || null;
-}

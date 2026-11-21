@@ -8,9 +8,7 @@ export const site = {
   name: "Pratibimb",
   editionLabel: "Pratibimb",
   college: "Bharati Vidyapeeth's College of Engineering, New Delhi",
-  collegeShort: "BVCOE",
   branch: "IEEE BVCOE Student Branch",
-  meaning: "reflection",
   tagline: "Capturing perfection in every reflection.",
   heroLede:
     "The annual magazine of the IEEE Student Branch at Bharati Vidyapeeth's College of Engineering, New Delhi.",

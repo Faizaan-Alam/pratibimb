@@ -42,5 +42,3 @@ export const editorIssues = [
 ];
 
 export const issueTeam = editorIssues[0].editors;
-
-export default editorIssues;
