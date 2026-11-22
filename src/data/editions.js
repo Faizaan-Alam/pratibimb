@@ -16,6 +16,7 @@ export const editions = [
     title: "Pratibimb 4.0",
     version: "4.0",
     year: "2026",
+    academicYear: "2025-2026",
     status: "current",
     tagline: "Capturing perfection in every reflection.",
     description:

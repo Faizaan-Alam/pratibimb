@@ -9,6 +9,7 @@ export const editorIssues = [
   {
     id: "4.0",
     title: "Pratibimb 4.0",
+    year: "2025-2026",
     editors: [
       {
         id: "faizaan-alam",
@@ -41,6 +42,8 @@ export const editorIssues = [
     ],
   },
 ];
+
+export const branchYear = "2025-2026";
 
 export const branchOfficers = [
   {

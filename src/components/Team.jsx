@@ -1,4 +1,4 @@
-import { branchOfficers, editorIssues } from "../data/team";
+import { branchOfficers, branchYear, editorIssues } from "../data/team";
 import TeamMemberCard from "./TeamMemberCard";
 
 function MemberGrid({ people, compact }) {
@@ -25,12 +25,16 @@ export default function Team({ compact = false }) {
           {editorIssues.map((issue) => (
             <div key={issue.id}>
               <h3 className="display-title text-3xl sm:text-4xl">{issue.title}</h3>
+              {issue.year ? (
+                <p className="mt-2 font-display text-sm tracking-wide text-base-content/55">{issue.year}</p>
+              ) : null}
               <MemberGrid people={issue.editors} compact={compact} />
             </div>
           ))}
           {compact ? null : (
             <div>
               <h3 className="display-title text-3xl sm:text-4xl">Student Branch</h3>
+              <p className="mt-2 font-display text-sm tracking-wide text-base-content/55">{branchYear}</p>
               <MemberGrid people={branchOfficers} compact={false} />
             </div>
           )}

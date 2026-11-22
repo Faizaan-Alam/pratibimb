@@ -51,6 +51,7 @@ export const about = {
     "Pratibimb exists so student work has a public form. It is a document of IEEE BVCOE, and it is also a space for voices that do not fit a lab report.",
   ],
   evolution: [
+    "Pratibimb 4.0 is the current edition, for 2025-2026.",
     "Pratibimb 3.0, issued for 2024-2025, is the third edition. Its printed index is built around society, awards, events, project reports, technical articles, non-technical work, and alumni reflections.",
     "This website is the digital home of Pratibimb: a place to read an issue, return to the archive, and meet the people who make it. New editions can be added as they are published.",
   ],
