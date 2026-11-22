@@ -13,7 +13,7 @@ export default function Navbar() {
     }`;
 
   return (
-    <header className="sticky top-0 z-40 border-b hairline bg-base-100">
+    <header className="sticky top-0 z-50 border-b hairline bg-base-100">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-content"

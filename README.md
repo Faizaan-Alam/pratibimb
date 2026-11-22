@@ -107,7 +107,7 @@ public/assets/editors/4.0/
 
 ## Themes
 
-The theme switcher is in the navigation. Eight DaisyUI themes ship with the site:
+The theme switcher is in the navigation. Each row shows a small paper-and-accent preview. Nine DaisyUI themes ship with the site:
 
 - **Night** (`nightfall`): default, dark cover tones
 - **Day** (`lumen`): light paper, violet type
@@ -117,13 +117,14 @@ The theme switcher is in the navigation. Eight DaisyUI themes ship with the site
 - **Moss** (`moss`): deep green
 - **Rose** (`rose`): blush paper and wine type
 - **Glacier** (`glacier`): cool grey paper and steel blue
+- **Retro** (`retro`): aged paper, burnt orange, and Fraunces headlines
 
 The chosen theme is stored in `localStorage` under `pratibimb-theme`.
 
 To add a theme:
 
 1. Define it in `tailwind.config.js` under `daisyui.themes`.
-2. Add a matching `{ id, label, description }` object in `src/data/themes.js`.
+2. Add a matching `{ id, label, description, paper, ink, accent }` object in `src/data/themes.js`.
 
 ## Folder map
 

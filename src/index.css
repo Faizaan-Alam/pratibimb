@@ -267,3 +267,24 @@
     transition: none;
   }
 }
+
+[data-theme="retro"] .font-display {
+  font-family: Fraunces, Palatino, Georgia, serif;
+  letter-spacing: -0.03em;
+}
+
+[data-theme="retro"] .kicker {
+  letter-spacing: 0.28em;
+}
+
+[data-theme="retro"] .hairline {
+  border-color: rgb(43 29 18 / 40%);
+}
+
+[data-theme="retro"] .btn-editorial {
+  box-shadow: 3px 3px 0 #2b1d12;
+}
+
+[data-theme="retro"] .btn-editorial:hover {
+  box-shadow: 1px 1px 0 #2b1d12;
+}
