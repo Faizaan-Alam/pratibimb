@@ -47,7 +47,7 @@ export default function TeamMemberCard({ member, compact = false }) {
         )}
       </div>
       <div className="mt-4">
-        <h3 className={`display-title ${compact ? "text-lg sm:text-xl" : "text-2xl sm:text-3xl"}`}>
+        <h3 className={`display-title min-w-0 break-words ${compact ? "text-lg sm:text-xl" : "text-2xl"}`}>
           {member.name}
         </h3>
         <p className="mt-1 font-display text-xs uppercase tracking-kicker text-base-content/55">

@@ -90,7 +90,7 @@ The cover used on the site is `public/assets/editions/pratibimb-3.0-cover.webp` 
 2. Point that person's `image` in `src/data/team.js` at the file.
 3. Refresh the website. If the old image remains, do a hard refresh (Ctrl+Shift+R).
 
-The current files are `faizaan.webp`, `devansh.webp`, and `pakhi.webp`. Abhipsita has no photograph yet. Names and roles are in `src/data/team.js`.
+The current editor files are `faizaan.webp`, `devansh.webp`, `abhipsita.webp`, and `pakhi.webp`. President and Vice President photos are in `public/assets/editors/branch/` and show on the Editors page only. Names and roles are in `src/data/team.js`.
 
 ## How to replace other assets
 

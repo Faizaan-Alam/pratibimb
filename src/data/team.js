@@ -1,8 +1,8 @@
 /*
   Editors shown on the site.
+  Photographs are copied from the members folder into public/assets/editors/.
   Faizaan's portrait is the earlier site photo.
-  Devansh and Pakhi come from the members folder.
-  Abhipsita has no photograph yet.
+  Branch officers appear on the Editors page only.
 */
 
 export const editorIssues = [
@@ -29,6 +29,7 @@ export const editorIssues = [
         name: "Abhipsita Sarkaar",
         role: "Chief Editor",
         issue: "4.0",
+        image: "/assets/editors/4.0/abhipsita.webp",
       },
       {
         id: "pakhi",
@@ -38,6 +39,21 @@ export const editorIssues = [
         image: "/assets/editors/4.0/pakhi.webp",
       },
     ],
+  },
+];
+
+export const branchOfficers = [
+  {
+    id: "vivek-suryavanshi",
+    name: "Vivek Suryavanshi",
+    role: "President",
+    image: "/assets/editors/branch/vivek.webp",
+  },
+  {
+    id: "ayush-sharma",
+    name: "Ayush Sharma",
+    role: "Vice President",
+    image: "/assets/editors/branch/ayush.webp",
   },
 ];
 

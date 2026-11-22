@@ -1,5 +1,19 @@
-import { editorIssues } from "../data/team";
+import { branchOfficers, editorIssues } from "../data/team";
 import TeamMemberCard from "./TeamMemberCard";
+
+function MemberGrid({ people, compact }) {
+  return (
+    <div
+      className={`mt-8 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 ${
+        compact ? "lg:grid-cols-6" : "lg:grid-cols-4"
+      }`}
+    >
+      {people.map((member) => (
+        <TeamMemberCard key={member.id} member={member} compact={compact} />
+      ))}
+    </div>
+  );
+}
 
 export default function Team({ compact = false }) {
   return (
@@ -11,17 +25,15 @@ export default function Team({ compact = false }) {
           {editorIssues.map((issue) => (
             <div key={issue.id}>
               <h3 className="display-title text-3xl sm:text-4xl">{issue.title}</h3>
-              <div
-                className={`mt-8 grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 ${
-                  compact ? "lg:grid-cols-6" : "lg:grid-cols-4"
-                }`}
-              >
-                {issue.editors.map((member) => (
-                  <TeamMemberCard key={member.id} member={member} compact={compact} />
-                ))}
-              </div>
+              <MemberGrid people={issue.editors} compact={compact} />
             </div>
           ))}
+          {compact ? null : (
+            <div>
+              <h3 className="display-title text-3xl sm:text-4xl">Student Branch</h3>
+              <MemberGrid people={branchOfficers} compact={false} />
+            </div>
+          )}
         </div>
       </div>
     </section>
