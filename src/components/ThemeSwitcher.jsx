@@ -21,7 +21,7 @@ export default function ThemeSwitcher() {
       <ul
         tabIndex={0}
         role="listbox"
-        className="dropdown-content menu z-50 mt-2 w-52 rounded-sm border hairline bg-base-100 p-2 shadow-lg"
+        className="dropdown-content menu z-50 mt-2 max-h-[min(70vh,28rem)] w-52 overflow-y-auto rounded-sm border hairline bg-base-100 p-2 shadow-lg"
       >
         {themes.map((item) => (
           <li key={item.id} role="option" aria-selected={item.id === theme}>

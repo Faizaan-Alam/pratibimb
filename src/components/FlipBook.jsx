@@ -4,7 +4,29 @@ import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
 
 GlobalWorkerOptions.workerSrc = workerUrl;
 
-const MAX_CSS_WIDTH = 1100;
+const MAX_CSS_WIDTH = 900;
+
+function slot(spread, numPages) {
+  const left = spread === 0 ? 0 : spread * 2;
+  const right = spread * 2 + 1;
+  return {
+    left: left >= 1 && left <= numPages ? left : 0,
+    right: right >= 1 && right <= numPages ? right : 0,
+  };
+}
+
+function maxSpread(numPages) {
+  return Math.floor(numPages / 2);
+}
+
+function spreadLabel(spread, numPages) {
+  if (!numPages) return "—";
+  const { left, right } = slot(spread, numPages);
+  const shown = [left, right].filter(Boolean);
+  if (shown.length === 2) return `${shown[0]}–${shown[1]} / ${numPages}`;
+  if (shown.length === 1) return `${shown[0]} / ${numPages}`;
+  return `— / ${numPages}`;
+}
 
 async function paintPage(pdf, pageNumber) {
   const page = await pdf.getPage(pageNumber);
@@ -18,23 +40,31 @@ async function paintPage(pdf, pageNumber) {
   return canvas.toDataURL("image/jpeg", 0.82);
 }
 
+function Paper({ url, alt }) {
+  if (!url) return <div className="flip-blank" />;
+  return <img className="flip-page" src={url} alt={alt} />;
+}
+
 export default function FlipBook({ src, title }) {
   const pdfRef = useRef(null);
   const cache = useRef(new Map());
   const busy = useRef(false);
+  const turnRef = useRef(async () => {});
   const touchX = useRef(0);
+  const shellRef = useRef(null);
   const [numPages, setNumPages] = useState(0);
-  const [page, setPage] = useState(1);
-  const [shot, setShot] = useState("");
+  const [spread, setSpread] = useState(0);
+  const [faces, setFaces] = useState({ left: "", right: "" });
   const [progress, setProgress] = useState(0);
   const [error, setError] = useState("");
   const [motion, setMotion] = useState(null);
+  const [full, setFull] = useState(false);
 
   useEffect(() => {
     let dead = false;
     cache.current.clear();
-    setShot("");
-    setPage(1);
+    setFaces({ left: "", right: "" });
+    setSpread(0);
     setError("");
     setProgress(0);
     const task = getDocument({ url: src });
@@ -65,23 +95,41 @@ export default function FlipBook({ src, title }) {
     const pdf = pdfRef.current;
     if (!pdf) return;
     let dead = false;
-    const wanted = [page - 1, page, page + 1].filter((n) => n >= 1 && n <= pdf.numPages);
+    const show = slot(spread, pdf.numPages);
+    const around = [spread - 1, spread, spread + 1]
+      .filter((index) => index >= 0 && index <= maxSpread(pdf.numPages))
+      .flatMap((index) => {
+        const pair = slot(index, pdf.numPages);
+        return [pair.left, pair.right];
+      })
+      .filter((pageNumber, index, all) => pageNumber && all.indexOf(pageNumber) === index);
+
     (async () => {
-      for (const n of wanted) {
+      const url = async (pageNumber) => {
+        if (!pageNumber) return "";
+        if (!cache.current.has(pageNumber)) cache.current.set(pageNumber, await paintPage(pdf, pageNumber));
+        return cache.current.get(pageNumber);
+      };
+      const left = await url(show.left);
+      if (dead) return;
+      const right = await url(show.right);
+      if (dead || busy.current) return;
+      setFaces({ left, right });
+      for (const pageNumber of around) {
         if (dead) return;
-        if (!cache.current.has(n)) cache.current.set(n, await paintPage(pdf, n));
-        if (n === page && !dead) setShot(cache.current.get(n));
+        await url(pageNumber);
       }
       for (const key of [...cache.current.keys()]) {
-        if (Math.abs(key - page) > 3) cache.current.delete(key);
+        if (!around.includes(key) && Math.abs(key - (show.right || show.left)) > 4) cache.current.delete(key);
       }
     })().catch((err) => {
       if (!dead) setError(err?.message || "Could not draw this page.");
     });
+
     return () => {
       dead = true;
     };
-  }, [page, numPages]);
+  }, [spread, numPages]);
 
   useEffect(() => {
     if (!motion || motion.phase !== "in") return;
@@ -97,39 +145,60 @@ export default function FlipBook({ src, title }) {
     };
   }, [motion]);
 
-  async function go(dir) {
+  function settle(next) {
+    setSpread(next.spread);
+    setFaces({ left: next.leftUrl, right: next.rightUrl });
+    setMotion(null);
+    busy.current = false;
+  }
+
+  async function turn(dir) {
     const pdf = pdfRef.current;
     if (!pdf || busy.current || motion) return;
-    const to = page + dir;
-    if (to < 1 || to > pdf.numPages) return;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const nextSpread = spread + dir;
+    if (nextSpread < 0 || nextSpread > maxSpread(pdf.numPages)) return;
     busy.current = true;
+    const current = slot(spread, pdf.numPages);
+    const upcoming = slot(nextSpread, pdf.numPages);
     try {
-      if (!cache.current.has(to)) cache.current.set(to, await paintPage(pdf, to));
-      const toUrl = cache.current.get(to);
+      const url = async (pageNumber) => {
+        if (!pageNumber) return "";
+        if (!cache.current.has(pageNumber)) cache.current.set(pageNumber, await paintPage(pdf, pageNumber));
+        return cache.current.get(pageNumber);
+      };
+      const currentLeft = await url(current.left);
+      const currentRight = await url(current.right);
+      const nextLeft = await url(upcoming.left);
+      const nextRight = await url(upcoming.right);
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduce) {
-        setPage(to);
-        setShot(toUrl);
+        setSpread(nextSpread);
+        setFaces({ left: nextLeft, right: nextRight });
         busy.current = false;
         return;
       }
-      const fromUrl = cache.current.get(page) || shot;
-      setMotion({ dir, from: page, to, fromUrl, toUrl, phase: "in" });
+      setMotion({
+        dir,
+        phase: "in",
+        spread: nextSpread,
+        underLeft: dir > 0 ? currentLeft : nextLeft,
+        underRight: dir > 0 ? nextRight : currentRight,
+        frontUrl: dir > 0 ? currentRight : nextRight,
+        backUrl: dir > 0 ? nextLeft : currentLeft,
+        leftUrl: nextLeft,
+        rightUrl: nextRight,
+      });
     } catch (err) {
       setError(err?.message || "Could not turn the page.");
       busy.current = false;
     }
   }
 
-  function settle(next) {
-    setPage(next.to);
-    setShot(next.toUrl);
-    setMotion(null);
-    busy.current = false;
-  }
+  turnRef.current = turn;
 
   function finish(event) {
-    if (event.target !== event.currentTarget || !motion || motion.phase !== "go") return;
+    if (event.target !== event.currentTarget || event.propertyName !== "transform") return;
+    if (!motion || motion.phase !== "go") return;
     settle(motion);
   }
 
@@ -142,57 +211,103 @@ export default function FlipBook({ src, title }) {
 
   useEffect(() => {
     function onKey(event) {
-      if (event.key === "ArrowRight") go(1);
-      if (event.key === "ArrowLeft") go(-1);
+      if (event.key === "ArrowRight") turnRef.current(1);
+      if (event.key === "ArrowLeft") turnRef.current(-1);
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  });
+  }, []);
 
-  const resting = motion ? (motion.dir > 0 ? motion.toUrl : motion.fromUrl) : shot;
+  useEffect(() => {
+    function onChange() {
+      setFull(document.fullscreenElement === shellRef.current);
+    }
+    document.addEventListener("fullscreenchange", onChange);
+    return () => document.removeEventListener("fullscreenchange", onChange);
+  }, []);
+
+  async function toggleFull() {
+    const shell = shellRef.current;
+    if (!shell) return;
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await shell.requestFullscreen();
+    } catch (err) {
+      setError(err?.message || "Full screen is not available in this browser.");
+    }
+  }
+
+  const shown = motion
+    ? { left: motion.underLeft, right: motion.underRight }
+    : faces;
+  const atStart = spread <= 0;
+  const atEnd = !numPages || spread >= maxSpread(numPages);
+  const waiting = !shown.right && !shown.left;
 
   return (
-    <div>
+    <div ref={shellRef} className="flip-reader">
       <div
-        className="flip-stage"
+        className="flip-book"
         onTouchStart={(event) => {
           touchX.current = event.changedTouches[0].clientX;
         }}
         onTouchEnd={(event) => {
           const dx = event.changedTouches[0].clientX - touchX.current;
-          if (dx < -48) go(1);
-          if (dx > 48) go(-1);
+          if (dx < -48) turn(1);
+          if (dx > 48) turn(-1);
         }}
       >
-        {resting ? (
-          <img className="flip-page" src={resting} alt={`${title}, page ${motion?.dir > 0 ? motion.to : page}`} />
-        ) : (
+        {waiting ? (
           <div className="flip-placeholder">
-            <p>{error ? "This page could not be drawn." : progress < 100 ? `Opening the issue ${progress}%` : "Drawing the page"}</p>
+            <p>
+              {error
+                ? "This page could not be drawn."
+                : progress < 100
+                  ? `Opening the issue ${progress}%`
+                  : "Drawing the page"}
+            </p>
           </div>
+        ) : (
+          <>
+            <div className="flip-leaf flip-leaf-left">
+              <Paper url={shown.left} alt={shown.left ? `${title}, page ${slot(spread, numPages).left}` : ""} />
+            </div>
+            <div className="flip-leaf flip-leaf-right">
+              <Paper url={shown.right} alt={shown.right ? `${title}, page ${slot(motion ? motion.spread : spread, numPages).right || ""}` : ""} />
+            </div>
+          </>
         )}
         {motion ? (
           <div
             className={`flip-sheet ${motion.dir > 0 ? "flip-next" : "flip-prev"} ${motion.phase === "go" ? "is-go" : ""}`}
             onTransitionEnd={finish}
           >
-            <img className="face front" src={motion.dir > 0 ? motion.fromUrl : motion.toUrl} alt="" />
-            <div className="face back" />
+            <div className="face front">
+              <Paper url={motion.frontUrl} alt="" />
+            </div>
+            <div className="face back">
+              <Paper url={motion.backUrl} alt="" />
+            </div>
           </div>
         ) : null}
-        <button type="button" className="flip-hit flip-hit-left" aria-label="Previous page" onClick={() => go(-1)} />
-        <button type="button" className="flip-hit flip-hit-right" aria-label="Next page" onClick={() => go(1)} />
+        <button type="button" className="flip-hit flip-hit-left" aria-label="Previous pages" onClick={() => turn(-1)} />
+        <button type="button" className="flip-hit flip-hit-right" aria-label="Next pages" onClick={() => turn(1)} />
       </div>
-      <div className="mt-4 flex items-center justify-between gap-3">
-        <button type="button" className="btn-ghost-editorial btn-sm h-10 min-h-10" onClick={() => go(-1)} disabled={page <= 1}>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        <button type="button" className="btn-ghost-editorial btn-sm h-10 min-h-10" onClick={() => turn(-1)} disabled={atStart || Boolean(motion)}>
           Previous
         </button>
-        <p className="font-display text-sm text-base-content/70">
-          {numPages ? `${page} / ${numPages}` : "—"}
+        <p className="font-display text-sm text-base-content/70" aria-live="polite">
+          {spreadLabel(spread, numPages)}
         </p>
-        <button type="button" className="btn-ghost-editorial btn-sm h-10 min-h-10" onClick={() => go(1)} disabled={!numPages || page >= numPages}>
-          Next
-        </button>
+        <div className="flex gap-2">
+          <button type="button" className="btn-ghost-editorial btn-sm h-10 min-h-10" onClick={toggleFull}>
+            {full ? "Exit full screen" : "Full screen"}
+          </button>
+          <button type="button" className="btn-ghost-editorial btn-sm h-10 min-h-10" onClick={() => turn(1)} disabled={atEnd || Boolean(motion)}>
+            Next
+          </button>
+        </div>
       </div>
       {error ? <p className="mt-3 text-center text-sm text-error">{error}</p> : null}
     </div>

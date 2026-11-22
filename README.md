@@ -107,12 +107,16 @@ public/assets/editors/4.0/
 
 ## Themes
 
-The theme switcher is in the navigation. Four DaisyUI themes ship with the site:
+The theme switcher is in the navigation. Eight DaisyUI themes ship with the site:
 
 - **Night** (`nightfall`): default, dark cover tones
 - **Day** (`lumen`): light paper, violet type
 - **Folio** (`folio`): warm print tones
 - **Contrast** (`contrast`): high-contrast reading
+- **Ink** (`ink`): navy with a cool blue accent
+- **Moss** (`moss`): deep green
+- **Rose** (`rose`): blush paper and wine type
+- **Glacier** (`glacier`): cool grey paper and steel blue
 
 The chosen theme is stored in `localStorage` under `pratibimb-theme`.
 
@@ -139,7 +143,7 @@ src/pages/        Routes
 
 ## Reading editions
 
-`/edition/pratibimb-3.0` embeds the PDF and also offers Open in a new tab and Download.
+`/edition/pratibimb-3.0` and `/edition/pratibimb-4.0` open the issue as a two-page spread. Previous and Next turn one leaf. Full screen enlarges the spread. Open in a new tab and Download stay above the reader.
 
 ## Notes for editors
 
